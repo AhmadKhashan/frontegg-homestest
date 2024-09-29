@@ -1,0 +1,62 @@
+Question 1-After going through the frontegg customer journey & integration, take some time
+and explore the frontegg portal, admin portal, and available features. Please
+suggest 3 items you would improve in that experience.
+
+solution 1:
+
+suggestion 1: would be to make the integration not local to the portal but a separate docs page with more explanation from what is already there because from my experience I did need to go to external resources to add and edit and make certain functionalities work.
+
+suggestion 2: would be to change where certain configuration and settings and make them more understandable to find what where.
+
+suggestion 3: would be to auto refresh a page when a change is made where I found myself multiple times not having real time data and needed to refresh when changing certain settings in the portal.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Question 2-Answer some of the common questions we get from users
+
+a-For some reason when I get my invite email to my application, it redirects
+me to “localhost:3000” - but I didn’t set this. How can I change it.
+
+solution a: you can easily change this in the app url of the application by going to applications->scrolling down to find app url which will be localhost:3000 by default.
+
+b-Why don’t I see the ‘Users’ page on my admin portal (in the app settings button)
+
+solution b: users page can be added by going to admin portal toggling the users button on the left and switching to on then you should be able to see the users page.
+
+bonus: you may not be able to see the button invite user as your account is read only and not an admin and so you can only see users but not invite any.
+
+
+c- For some reason I don’t have the google login - why is that?
+
+solution c: because you did do not have google as an active social login method in your application you could easily do so by going to login page in the front egg UI and under social login toggling the switch on for google login or any other social platform that is supported.
+
+d. Explain what refresh tokens are and why we need them?
+
+solution d: Session tokens are crucial for ensuring that users remain authenticated as they navigate through different pages or perform various actions within your application. They are often stored on the client side as cookies or in local storage and are validated on the server side to ensure the user's identity and permissions.
+
+When a users authenticate themselves with Frontegg, they receive a JWT containing the user's associated Session ID and a refreshToken linked to the cookie. taken from docs.frontegg
+
+Refresh Tokens:instead of asking the user to log in again, the client sends the refresh token to the server to request a new access token.
+ Long-lived, used to request new access tokens without requiring the user to log in again.
+
+bonus: 401 error is an authorized error it happens when an application or client is trying to access resource in the app itself but doesn't have the correct authentication credentials to do so for security purposes a possible reason for this error could be that the access token has expired and here the client uses a refresh token to request a new one.
+
+bonus2:
+A JWT (JSON Web Token) is a compact, URL-safe token used to represent claims securely between two parties (typically the client and server). It's commonly used for authentication and authorization.
+A refresh token is a long-lived token used to obtain a new JWT (access token) when the current access token expires.
+
+When a JWT expires, the client sends a request to the server with the refresh token.
+The server verifies the refresh token. If valid, it issues a new JWT (and possibly a new refresh token).
+This allows the user to stay authenticated without needing to log in again.
+
+e- Can you please point out which API I can use to change the user's active
+tenant? How should one use it? (hint: check the API docs)
+
+solution e: from the docs I need to use the switchtenat functionality from the frontegg sdk which does not need a sepreate api request instead it could be handled using the useauthactions hook within the frontend from frontegg/react
+and if we want to use an api we can use the selservice api.
+
+f. Is there a way to block users with a certain email from signing up to a
+tenant? If yes, how?
+
+solution f: using permissions under entitlements and searching for a security policy that is already configured or you can create a custom one to do so.
+
